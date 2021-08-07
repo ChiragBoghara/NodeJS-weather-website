@@ -11,21 +11,20 @@ weatherForm.addEventListener("submit", (e) => {
 
   messageOne.innerHTML = "Loading...";
   messageTwo.innerHTML = "";
-  fetch("http://localhost:3000/weather?address=" + location).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          messageOne.innerHTML = data.error;
-        } else {
-          messageOne.innerHTML = data.location;
-          messageTwo.innerHTML =
-            data.forecast.description +
-            ".It is currently " +
-            data.forecast.temprature +
-            " out there. But Feels like " +
-            data.forecast.feels_like;
-        }
-      });
-    }
-  );
+
+  fetch("/weather?address=" + location).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        messageOne.innerHTML = data.error;
+      } else {
+        messageOne.innerHTML = data.location;
+        messageTwo.innerHTML =
+          data.forecast.description +
+          ".It is currently " +
+          data.forecast.temprature +
+          " out there. But Feels like " +
+          data.forecast.feels_like;
+      }
+    });
+  });
 });

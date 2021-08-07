@@ -8,6 +8,8 @@ const hbs = require("hbs");
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 //app.com
 //app.com/about
 //app.com/help
@@ -91,6 +93,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Web server is started");
+app.listen(port, () => {
+  console.log("Server is up on port" + port);
 });
