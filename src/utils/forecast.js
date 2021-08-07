@@ -23,6 +23,8 @@ const forecast = (lat, long, callback) => {
         description: body.weather[0].description,
         temprature: body.main.temp,
         feels_like: body.main.feels_like,
+        humidity: body.main.humidity,
+        wind_speed: body.wind.speed,
       };
       callback(undefined, data);
     }
